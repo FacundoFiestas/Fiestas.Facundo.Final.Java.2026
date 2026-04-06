@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="8" alignment="CENTER"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.AgregarVehiculoViewController">
+
+    <Label text="Tipo de vehículo"/>
+
+    <ComboBox fx:id="comboTipo"/>
+
+    <Separator/>
+
+    <!-- CAMPOS COMUNES -->
+
+    <Label text="Marca"/>
+    <TextField fx:id="txtMarca"/>
+
+    <Label text="Año"/>
+    <TextField fx:id="txtAnio"/>
+
+    <Label text="Precio"/>
+    <TextField fx:id="txtPrecio"/>
+
+    <Label text="Tipo de combustible"/>
+    <ComboBox fx:id="comboCombustible"/>
+
+    <Separator/>
+
+    <!-- CAMPOS AUTO -->
+
+    <VBox fx:id="boxAuto" spacing="5">
+
+        <Label text="Cantidad de puertas"/>
+        <TextField fx:id="txtPuertas"/>
+
+        <CheckBox fx:id="checkAutomatico" text="Es automático"/>
+
+    </VBox>
+
+    <!-- CAMPOS MOTO -->
+
+    <VBox fx:id="boxMoto" spacing="5">
+
+        <Label text="Cilindrada"/>
+        <TextField fx:id="txtCilindrada"/>
+
+        <CheckBox fx:id="checkABS" text="Tiene frenos ABS"/>
+
+    </VBox>
+
+    <!-- CAMPOS CAMIONETA -->
+
+    <VBox fx:id="boxCamioneta" spacing="5">
+
+        <Label text="Capacidad de carga"/>
+        <TextField fx:id="txtCarga"/>
+
+        <CheckBox fx:id="check4x4" text="Es 4x4"/>
+
+    </VBox>
+
+    <Separator/>
+
+    <Button text="Aceptar" onAction="#crearVehiculo"/>
+
+</VBox>

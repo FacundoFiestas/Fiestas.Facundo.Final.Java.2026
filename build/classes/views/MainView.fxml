@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.MainViewController">
+
+    <center>
+        <ListView fx:id="listaVehiculos"/>
+    </center>
+
+    <right>
+        <VBox spacing="10" alignment="CENTER">
+
+           <Button text="Agregar" onAction="#abrirVentanaAgregar"/>
+            <Button text="Modificar" onAction="#modificarVehiculo"/>
+            <Button text="Eliminar" onAction="#eliminarVehiculo"/>
+
+            <Separator/>
+
+            <Button text="Ordenar por precio" onAction="#ordenarPorPrecio"/>
+            <Button text="Ordenar por año" onAction="#ordenarPorAnio"/>
+            <Button text="Ordenar por marca" onAction="#ordenarPorMarca"/>
+
+            <Separator/>
+
+            <Button text="Aplicar oferta" onAction="#aplicarOferta"/>
+
+            <Separator/>
+
+            <Button text="Guardar en JSON" onAction="#guardarJson" />
+            <Button text="Recuperar en JSON" onAction="#recuperarJson" />
+
+            <Button text="Guardar en CSV" onAction="#guardarCsv" />
+            <Button text="Recuperar en CSV" onAction="#recuperarCsv" />
+
+            <Separator/>
+
+            <Button text="Exportar Autos a TXT" onAction="#exportarAutos" />
+            <Button text="Exportar Motos a TXT" onAction="#exportarMotos"/>
+             <Button text="Exportar Camionetas a TXT" onAction="#exportarCamionetas"/>
+             
+             <Separator/>
+             
+             <Button text="Calcular seguro" onAction="#calcularSeguro"/>
+             <Button text="Calcular cuota" onAction="#calcularCuota"/>
+</VBox>
+    </right>
+
+</BorderPane>
