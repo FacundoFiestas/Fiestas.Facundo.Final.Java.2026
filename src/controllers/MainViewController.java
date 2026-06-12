@@ -21,6 +21,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 import models.Gestion;
 import models.Vehiculo;
+import models.VehiculoIterator;
 import utils.Validador;
 // Controlador principal de la aplicación
 // Maneja la lista de vehículos y las acciones del usuario
@@ -36,9 +37,19 @@ public class MainViewController implements Initializable {
      // Carga inicial de la lista
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        listaVehiculos.getItems().setAll(gestion.listar());
+         actualizarLista();
     }    
     
+    private void actualizarLista() {
+
+    listaVehiculos.getItems().clear();
+
+    VehiculoIterator iterator = gestion.obtenerIterator();
+
+    while (iterator.hasNext()) {
+        listaVehiculos.getItems().add(iterator.next());
+    }
+}
     // Abre la ventana para agregar un vehículo
 @FXML
 private void abrirVentanaAgregar() {
@@ -63,7 +74,7 @@ private void abrirVentanaAgregar() {
          // Si se creó correctamente, se agrega a la lista
         if (vehiculo != null) {
             gestion.agregar(vehiculo);
-            listaVehiculos.getItems().setAll(gestion.listar());
+             actualizarLista();
         }
 
     } catch (Exception e) {
@@ -90,7 +101,7 @@ private void eliminarVehiculo() {
 
             gestion.eliminar(index);
 
-            listaVehiculos.getItems().setAll(gestion.listar());
+             actualizarLista();
 
         }
     }
@@ -132,7 +143,7 @@ private void modificarVehiculo() {
 
                 gestion.modificar(index, vehiculoModificado);
 
-                listaVehiculos.getItems().setAll(gestion.listar());
+                 actualizarLista();
 
             }
 
@@ -150,7 +161,7 @@ private void ordenarPorPrecio(){
 
     gestion.ordenarPorPrecio();
 
-    listaVehiculos.getItems().setAll(gestion.listar());
+     actualizarLista();
 
 }
 
@@ -159,7 +170,7 @@ private void ordenarPorAnio(){
 
     gestion.ordenarPorAnio();
 
-    listaVehiculos.getItems().setAll(gestion.listar());
+     actualizarLista();
 
 }
 
@@ -168,7 +179,7 @@ private void ordenarPorMarca(){
 
     gestion.ordenarPorMarca();
 
-    listaVehiculos.getItems().setAll(gestion.listar());
+     actualizarLista();
 
 }
 // Aplica descuento a todos los vehículos
@@ -188,7 +199,7 @@ private void aplicarOferta(){
         return;
     }
 
-    listaVehiculos.getItems().setAll(gestion.listar());
+     actualizarLista();
 
 }
 
@@ -213,7 +224,7 @@ private void recuperarJson(){
         return;
     }
 
-    listaVehiculos.getItems().setAll(gestion.listar());
+     actualizarLista();
 }
 
 @FXML
@@ -237,7 +248,7 @@ private void recuperarCsv(){
         return;
     }
 
-    listaVehiculos.getItems().setAll(gestion.listar());
+     actualizarLista();
 }
 
 @FXML
@@ -348,8 +359,7 @@ private void filtrarFinanciables() {
 
     } else {
 
-        listaVehiculos.setItems(
-                FXCollections.observableArrayList(gestion.listar()));
+         actualizarLista();
 
         btnFinanciables.setText("Mostrar financiables");
 

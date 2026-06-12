@@ -43,7 +43,6 @@ public class Gestion implements ICrud <Vehiculo> {
         public List<Vehiculo> listar(){
             return new ArrayList<>(vehiculos);
         }
-        // Devuelve un iterador personalizado
         public VehiculoIterator obtenerIterator(){
             return new VehiculoIterator(vehiculos);
         }
