@@ -62,17 +62,15 @@ public class Gestion implements ICrud <Vehiculo> {
             
         }
     // Aplica un 10% de descuento a todos los vehículos (una sola vez    
-   public boolean aplicarOferta() {
+      public boolean aplicarOferta() {
 
     if (ofertaAplicada) {
         return false;
     }
 
-    // Uso de wildcard (? super Vehiculo)
-    List<? super Vehiculo> lista = vehiculos;
-
-     // Recorre y modifica precios
-    lista.forEach(v -> ((Vehiculo) v).setPrecio(((Vehiculo) v).getPrecio() * 0.9));
+    vehiculos.forEach(v ->
+        v.setPrecio(v.getPrecio() * 0.9)
+    );
 
     ofertaAplicada = true;
 
