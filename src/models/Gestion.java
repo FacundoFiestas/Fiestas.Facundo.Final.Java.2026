@@ -5,6 +5,7 @@ import Persistencia.VehiculoJsonDAO;
 import Persistencia.VehiculoTxtExporter;
 import comparators.VehiculoPorMarca;
 import comparators.VehiculoPorAnio;
+import interfaces.Financiable;
 import interfaces.ICrud;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -162,6 +163,19 @@ public class Gestion implements ICrud <Vehiculo> {
     }
 
     txtExporter.exportar(camionetas, "camionetas.txt", "LISTADO DE CAMIONETAS");
+}
+ 
+ public List<Vehiculo> obtenerFinanciables(List<? extends Vehiculo> vehiculos) {
+
+    List<Vehiculo> financiables = new ArrayList<>();
+
+    for (Vehiculo vehiculo : vehiculos) {
+        if (vehiculo instanceof Financiable) {
+            financiables.add(vehiculo);
+        }
+    }
+
+    return financiables;
 }
 }
 

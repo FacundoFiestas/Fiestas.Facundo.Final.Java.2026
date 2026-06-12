@@ -4,14 +4,17 @@ import exceptions.DatoInvalidoException;
 import exceptions.VehiculoNoFinanciableException;
 import interfaces.Financiable;
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextInputDialog;
@@ -25,7 +28,9 @@ public class MainViewController implements Initializable {
     
       @FXML
     private ListView<Vehiculo> listaVehiculos;
-
+    private boolean mostrandoFinanciables = false;
+    @FXML
+    private Button btnFinanciables;
     private Gestion gestion = new Gestion();
     
      // Carga inicial de la lista
@@ -326,5 +331,29 @@ private void mostrarError(String mensaje){
     alert.setContentText(mensaje);
     alert.showAndWait();
 }
-}
+@FXML
+private void filtrarFinanciables() {
 
+    if (!mostrandoFinanciables) {
+
+        List<Vehiculo> financiables =
+                gestion.obtenerFinanciables(gestion.listar());
+
+        listaVehiculos.setItems(
+                FXCollections.observableArrayList(financiables));
+
+        btnFinanciables.setText("Mostrar todos");
+
+        mostrandoFinanciables = true;
+
+    } else {
+
+        listaVehiculos.setItems(
+                FXCollections.observableArrayList(gestion.listar()));
+
+        btnFinanciables.setText("Mostrar financiables");
+
+        mostrandoFinanciables = false;
+    }
+}
+}

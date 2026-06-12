@@ -26,6 +26,9 @@
             <Separator/>
 
             <Button text="Aplicar oferta" onAction="#aplicarOferta"/>
+            <Button fx:id="btnFinanciables"
+            text="Mostrar financiables"
+            onAction="#filtrarFinanciables"/>
 
             <Separator/>
 
