@@ -164,8 +164,7 @@ private void crearVehiculo(){
     //datos en comun
     txtMarca.setText(v.getMarca());
     txtAnio.setText(String.valueOf(v.getAnio()));
-    txtPrecio.setText(String.valueOf(v.getPrecio()));
-
+    txtPrecio.setText(String.format("%.0f", v.getPrecio()));
     comboCombustible.setValue(v.getTipoCombustible());
     
     //datos especificos
